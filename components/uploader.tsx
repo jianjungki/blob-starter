@@ -48,10 +48,13 @@ export default function Uploader() {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("https://whitesmokelightbluecron.jianjungki.repl.co/upload", {
-          method: "POST",
-          body: formdata,
-        }).then(async (res) => {
+        fetch(
+          "https://whitesmoke-lightblue-cron-jianjungki.replit.app/upload",
+          {
+            method: "POST",
+            body: formdata,
+          },
+        ).then(async (res) => {
           if (res.status === 200) {
             const { url } = (await res.json()) as BlobResult;
             toast(
