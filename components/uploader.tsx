@@ -46,11 +46,16 @@ export default function Uploader() {
       onSubmit={async (e) => {
         e.preventDefault();
         setSaving(true);
+        const formdata: any = new FormData();
+        formdata.append("file", file);
         fetch(
           "https://whitesmoke-lightblue-cron-jianjungki.replit.app/upload",
           {
             method: "POST",
-            body: file,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            body: formdata,
           },
         ).then(async (res) => {
           if (res.status === 200) {
