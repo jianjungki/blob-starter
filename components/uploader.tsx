@@ -46,11 +46,13 @@ export default function Uploader() {
       onSubmit={async (e) => {
         e.preventDefault();
         setSaving(true);
-        fetch("/api/upload", {
-          method: "POST",
-          headers: { "content-type": file?.type || "application/octet-stream" },
-          body: file,
-        }).then(async (res) => {
+        fetch(
+          "https://whitesmoke-lightblue-cron-jianjungki.replit.app/upload",
+          {
+            method: "POST",
+            body: file,
+          },
+        ).then(async (res) => {
           if (res.status === 200) {
             const { url } = (await res.json()) as BlobResult;
             toast(
