@@ -46,18 +46,12 @@ export default function Uploader() {
       onSubmit={async (e) => {
         e.preventDefault();
         setSaving(true);
-        const formdata: any = new FormData();
-        formdata.append("file", file);
-        fetch(
-          "https://whitesmoke-lightblue-cron-jianjungki.replit.app/upload",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            body: formdata,
-          },
-        ).then(async (res) => {
+        const formdata = new FormData();
+        formdata.append("file", file as File);
+        fetch("https://whitesmokelightbluecron.jianjungki.repl.co/upload", {
+          method: "POST",
+          body: formdata,
+        }).then(async (res) => {
           if (res.status === 200) {
             const { url } = (await res.json()) as BlobResult;
             toast(
@@ -68,7 +62,7 @@ export default function Uploader() {
                       File uploaded!
                     </p>
                     <p className="mt-1 text-sm text-gray-500">
-                      Your file has been uploaded to{" "}
+                      Convert result{" "}
                       <a
                         className="font-medium text-gray-900 underline"
                         href={url}
