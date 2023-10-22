@@ -49,7 +49,7 @@ export default function Uploader() {
         const formdata = new FormData();
         formdata.append("file", file as File);
         fetch(
-          "https://whitesmoke-lightblue-cron-jianjungki.replit.app/upload",
+          "https://whitesmoke-lightblue-cron-1-jianjungki.replit.app/upload",
           {
             method: "POST",
             body: formdata,
