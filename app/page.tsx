@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [pageData, setPageData] = useState(new Map());
-  const handlePageDataUpdate = (updatedMap) => {
+  const handlePageDataUpdate = (updatedMap: Map<any, any>) => {
     setPageData(updatedMap);
   };
   return (
