@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Progress } from "@nextui-org/react";
 
-export default function MyProgresss({ pageData }) {
+export default function MyProgresss({ pageData }: { pageData: any }) {
   const [nowVal, setNowValue] = useState(0);
   const [totalValue, setTotalValue] = useState(0);
   console.log(pageData);

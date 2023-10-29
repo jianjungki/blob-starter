@@ -4,7 +4,7 @@ import { useState, useCallback, useMemo, ChangeEvent } from "react";
 import toast from "react-hot-toast";
 import LoadingDots from "./loading-dots";
 
-export default function Uploader({ onUpdateMap }) {
+export default function Uploader({ onUpdateMap }:{onUpdateMap: any}) {
   const [data, setData] = useState<{
     file: string | null;
   }>({
