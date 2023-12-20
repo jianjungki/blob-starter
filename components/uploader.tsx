@@ -56,7 +56,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `http://api.winklight.shop/tasks/result/${data["result_id"]}`,
+                `https://api.winklight.shop/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
