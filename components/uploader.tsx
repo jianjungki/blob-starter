@@ -48,7 +48,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("https://flask-production-2a1e.up.railway.app/tasks/upload", {
+        fetch("https://api.winklight.shop/tasks/upload", {
           method: "POST",
           body: formdata,
         })
