@@ -4,7 +4,7 @@ import { useState, useCallback, useMemo, ChangeEvent } from "react";
 import toast from "react-hot-toast";
 import LoadingDots from "./loading-dots";
 
-export default function Uploader({ onUpdateMap }:{onUpdateMap: any}) {
+export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
   const [data, setData] = useState<{
     file: string | null;
   }>({
@@ -56,7 +56,7 @@ export default function Uploader({ onUpdateMap }:{onUpdateMap: any}) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `https://flask-production-2a1e.up.railway.app/tasks/result/${data["result_id"]}`,
+                `http://api.winklight.shop/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
