@@ -48,7 +48,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("https://flask-production-6588.up.railway.app/tasks/upload", {
+        fetch("https://hadis.winklight.shop/tasks/upload", {
           method: "POST",
           body: formdata,
         })
@@ -56,7 +56,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `https://flask-production-6588.up.railway.app/tasks/result/${data["result_id"]}`,
+                `https://hadis.winklight.shop/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
