@@ -48,7 +48,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("https://hadisv2.winklight.shop/tasks/upload", {
+        fetch("https://hadis-api.justhomemaker.com/tasks/upload", {
           method: "POST",
           body: formdata,
         })
@@ -56,7 +56,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `https://hadisv2.winklight.shop/tasks/result/${data["result_id"]}`,
+                `https://hadis-api.justhomemaker.com/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
