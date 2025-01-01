@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag blob-starter:$(date +%s)
+      run: docker build . --file Dockerfile --tag blob-starter:latest
       
    # 设置 Docker Hub 凭据
     - name: Log in to Docker Hub
@@ -25,5 +25,5 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     # 推送 Docker 镜像到 Docker Hub
-    - name: Push Docker image for celery
+    - name: Push Docker image for blob-starter
       run: docker push docker.io/jianjungki/blob-starter:latest
