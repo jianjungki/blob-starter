@@ -25,5 +25,5 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     # 推送 Docker 镜像到 Docker Hub
-    - name: Push Docker image for celery
+    - name: Push Docker image for blob-starter
       run: docker push docker.io/jianjungki/blob-starter:latest
