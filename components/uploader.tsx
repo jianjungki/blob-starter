@@ -48,7 +48,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("http://flaskapi:5000/tasks/upload", {
+        fetch("http://flask:5000/tasks/upload", {
           method: "POST",
           body: formdata,
         })
@@ -56,7 +56,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `http://flaskapi:5000/tasks/result/${data["result_id"]}`,
+                `http://flask:5000/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
