@@ -56,7 +56,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `http://192.168.1.4:89/tasks/result/${data["result_id"]}`,
+                `http://192.168.1.50:89/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
