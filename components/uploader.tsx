@@ -48,7 +48,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("http://192.168.1.4:89/tasks/upload", {
+        fetch("http://192.168.1.50:89/tasks/upload", {
           method: "POST",
           body: formdata,
         })
