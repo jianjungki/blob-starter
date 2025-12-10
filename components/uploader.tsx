@@ -48,7 +48,8 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        fetch("http://192.168.1.50:89/tasks/upload", {
+        const apiUrl = process.env.NEXT_PUBLIC_TASK_API_URL || "http://localhost:89";
+        fetch(`${apiUrl}/tasks/upload`, {
           method: "POST",
           body: formdata,
         })
@@ -56,7 +57,7 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
           .then((data) => {
             const poll = () => {
               fetch(
-                `http://192.168.1.50:89/tasks/result/${data["result_id"]}`,
+                `${apiUrl}/tasks/result/${data["result_id"]}`,
               )
                 .then((response) => response.json())
                 .then((data) => {
