@@ -29,7 +29,14 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
+# copy entrypoint script and ensure it can write runtime config
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
+RUN chown -R 1001:1001 /app/public || true
+
 USER nextjs
+
+ENTRYPOINT ["sh", "/app/docker-entrypoint.sh"]
 
 EXPOSE 3000
 

@@ -48,7 +48,28 @@ export default function Uploader({ onUpdateMap }: { onUpdateMap: any }) {
         setSaving(true);
         const formdata = new FormData();
         formdata.append("file", file as File);
-        const apiUrl = process.env.NEXT_PUBLIC_TASK_API_URL || "http://localhost:89";
+
+        const getApiUrl = async () => {
+          if (typeof window !== "undefined") {
+            const globalConfig = (window as any).__RUNTIME_CONFIG__;
+            if (globalConfig && globalConfig.NEXT_PUBLIC_TASK_API_URL) {
+              return globalConfig.NEXT_PUBLIC_TASK_API_URL;
+            }
+            try {
+              const res = await fetch("/runtime-config.json", { cache: "no-store" });
+              if (res.ok) {
+                const json = await res.json();
+                (window as any).__RUNTIME_CONFIG__ = json;
+                return json.NEXT_PUBLIC_TASK_API_URL;
+              }
+            } catch (err) {
+              // ignore and fallback
+            }
+          }
+          return (process.env.NEXT_PUBLIC_TASK_API_URL as string) || "http://localhost:89";
+        };
+
+        const apiUrl = await getApiUrl();
         fetch(`${apiUrl}/tasks/upload`, {
           method: "POST",
           body: formdata,
